@@ -1,5 +1,5 @@
 import QtQuick 2.0
-import QtQuick.Controls 2.1
+import QtQuick.Controls 2.2
 import QtQuick.Controls.Styles 1.4
 
 Rectangle {
@@ -8,15 +8,19 @@ Rectangle {
     width: 100
     radius: 50
     color: "transparent"
+    Text {
+        id: mytext
+        color: "red"
+    }
 Dial {
+    id:dial1
     from:0
     to:3
     stepSize: 1
     snapMode: Dial.SnapAlways
     height: 100
     width: 100
-
-     background: Rectangle {
+    background: Rectangle {
 
          color:"#B3D9E4"
          anchors.fill:parent
@@ -28,8 +32,9 @@ Dial {
                  anchors.fill:parent
              }
      }
-
-
+    onMoved: {
+           mytext.text=dial1.value.toString()
+    }
    }
 }
 

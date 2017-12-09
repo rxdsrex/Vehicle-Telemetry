@@ -1,13 +1,11 @@
 import QtQuick 2.6
-import QtQuick.Controls 2.1
+import QtQuick.Controls 1.4
 
 
 Slider {
     property string sid
             id: sid
-            from:0
-            to:100
-            value: 0
-            orientation: "Vertical"
+            orientation: Qt.Vertical
             height: 220
+            updateValueWhileDragging: true
 }

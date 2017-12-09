@@ -23,8 +23,20 @@ GroupBox {
         id:horizontalslider
         anchors.top:fs1.bottom
         anchors.left: fanimage.right
+        minimumValue: 0
+        maximumValue: 5
+        value: 0
+        stepSize: 1
         width: 200
         anchors.topMargin: 5
         anchors.bottomMargin: 150
+        onValueChanged: {
+                mytext.text=horizontalslider.value.toString()
+            }
+
+            Text{
+                id:mytext
+                color: "white"
+            }
     }
 }
