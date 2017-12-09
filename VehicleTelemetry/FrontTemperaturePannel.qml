@@ -23,7 +23,7 @@ GroupBox {
         maximumValue: 30
         value: 15
         orientation: Qt.Vertical
-        stepSize: 0.5
+        stepSize: 1.5
         onValueChanged: {
             mygb.state = slider1.value.toString()
         }
