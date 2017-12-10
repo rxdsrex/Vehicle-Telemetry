@@ -24,7 +24,7 @@ Window {
         Filler{}
         Filler{}
         Filler{}
-       FrontTemperaturePannel {id:f1;}
+       FrontTemperaturePannel {id:f1; objectName: "frontPanel"}
        CentralPannel{}
        BackTemperaturePannel {id:b1}
        TemperatureButton{direction: "front"}

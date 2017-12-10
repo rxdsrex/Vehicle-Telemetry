@@ -1,7 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>MainForm.ui.qml</file>
         <file>MySlider.qml</file>
         <file>VerticalIndicator.qml</file>
         <file>FrontTemperaturePannel.qml</file>
