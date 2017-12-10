@@ -31,5 +31,8 @@
         <file>FrontTemperaturePannel.qml</file>
         <file>RightDial.qml</file>
         <file>LeftDial.qml</file>
+        <file>fonts/DS-DIGIB.TTF</file>
+        <file>fonts/DS-DIGII.TTF</file>
+        <file>fonts/DS-DIGIT.TTF</file>
     </qresource>
 </RCC>
