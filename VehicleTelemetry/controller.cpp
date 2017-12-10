@@ -1,84 +1,84 @@
-#include "signalhandler.h"
+#include "controller.h"
 
-SignalHandler::SignalHandler() {
+Controller::Controller() {
     ambientLow = 5;
     ambientHigh = 45;
 }
 
 /*--------------Getters & Setter------------*/
 
-QVariant SignalHandler::getAmbientAirTemperature() {
+QVariant Controller::getAmbientAirTemperature() {
     this->setAmbientAirTemperature();
     return ambientAirTemperature;
 }
 
-void SignalHandler::setAmbientAirTemperature() {
+void Controller::setAmbientAirTemperature() {
     time = QTime::currentTime();
     qsrand((uint)time.msec());
     this->ambientAirTemperature = (qrand() % ((ambientHigh + 1) - ambientLow) + ambientLow);
 }
 
-QVariant SignalHandler::getFrontTemperature() {
+QVariant Controller::getFrontTemperature() {
     return frontTemperature;
 }
 
-QVariant SignalHandler::getRearTemperature() {
+QVariant Controller::getRearTemperature() {
     return rearTemperature;
 }
 
-QVariant SignalHandler::getLeftSeatHeat() {
+QVariant Controller::getLeftSeatHeat() {
     return leftSeatHeat;
 }
 
-QVariant SignalHandler::getRightSeatHeat() {
+QVariant Controller::getRightSeatHeat() {
     return rightSeatHeat;
 }
 
-QVariant SignalHandler::getFanSpeed() {
+QVariant Controller::getFanSpeed() {
     return fanSpeed;
 }
 
-QVariant SignalHandler::getIsAirConditioningActive() {
+QVariant Controller::getIsAirConditioningActive() {
     return isAirConditioningActive;
 }
 
-QVariant SignalHandler::getIsRecirculationActive() {
+QVariant Controller::getIsRecirculationActive() {
     return isRecirculationActive;
 }
 
 /*--------------SLOTS------------*/
 
-void SignalHandler::frontTempSliderSlot(const QVariant &ftemp) {
+void Controller::frontTempSliderSlot(const QVariant &ftemp) {
     this->frontTemperature = ftemp.toString();
     qWarning() << "F-Temp: " << this->frontTemperature.toString();
 }
 
-void SignalHandler::rearTempSliderSlot(const QVariant &rtemp) {
+void Controller::rearTempSliderSlot(const QVariant &rtemp) {
     this->rearTemperature = rtemp.toString();
     qWarning() << "R-Temp: " << this->rearTemperature.toString();
 }
 
-void SignalHandler::leftHeatDialSlot(const QVariant &lheat) {
+void Controller::leftHeatDialSlot(const QVariant &lheat) {
     this->leftSeatHeat = lheat.toString();
     qWarning() << "L-Heat: " << this->leftSeatHeat.toString();
 }
 
-void SignalHandler::rightHeatDialSlot(const QVariant &rheat) {
+void Controller::rightHeatDialSlot(const QVariant &rheat) {
     this->rightSeatHeat = rheat.toString();
     qWarning() << "R-Heat: " << this->rightSeatHeat.toString();
 }
 
-void SignalHandler::fanSpeedSliderSlot(const QVariant &fspeed) {
+void Controller::fanSpeedSliderSlot(const QVariant &fspeed) {
     this->fanSpeed = fspeed.toString();
     qWarning() << "F-Speed: " << this->fanSpeed.toString();
 }
 
-void SignalHandler::recirculationStateSlot(const QVariant &recirculate) {
+void Controller::recirculationStateSlot(const QVariant &recirculate) {
     this->isRecirculationActive = recirculate.toString();
     qWarning() << "Recirculation: " << this->isRecirculationActive.toString();
 }
 
-void SignalHandler::acStateSlot(const QVariant &ac) {
+void Controller::acStateSlot(const QVariant &ac) {
     this->isAirConditioningActive = ac.toString();
     qWarning() << "A/C: " << this->isAirConditioningActive.toString();
 }

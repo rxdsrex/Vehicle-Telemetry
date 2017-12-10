@@ -1,5 +1,5 @@
-#ifndef SIGNALHANDLER_H
-#define SIGNALHANDLER_H
+#ifndef CONTROLLER_H
+#define CONTROLLER_H
 
 #include <QObject>
 #include <QtGlobal>
@@ -8,7 +8,7 @@
 #include <QString>
 #include <QtDebug>
 
-class SignalHandler : public QObject {
+class Controller : public QObject {
     Q_OBJECT
 private:
     int ambientHigh;
@@ -24,7 +24,7 @@ private:
     QVariant isRecirculationActive;
 
 public:
-    explicit SignalHandler();
+    explicit Controller();
     void setAmbientAirTemperature();
     QVariant getAmbientAirTemperature();
     QVariant getFrontTemperature();
@@ -47,4 +47,4 @@ public slots:
     void acStateSlot(const QVariant&);
 };
 
-#endif // SIGNALHANDLER_H
+#endif // CONTROLLER_H

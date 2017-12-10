@@ -3,7 +3,7 @@
 #include <QQmlComponent>
 #include <QObject>
 #include <QtDebug>
-#include "signalhandler.h"
+#include "controller.h"
 
 //#include <QQmlApplicationEngine>
 
@@ -20,13 +20,13 @@ int main(int argc, char *argv[])
     QQmlComponent component(&engine, QUrl(QStringLiteral("qrc:/main.qml")));
     QObject *object = component.create();
 
-    SignalHandler *signalHandler = new SignalHandler();
+    Controller *controller = new Controller();
 
     QObject *frontPanel = object->findChild<QObject*>("frontPanel");
     if(frontPanel) {
         QObject *frontTempSlider = frontPanel->findChild<QObject*>("frontTempSlider");
         if(frontTempSlider) {
-            QObject::connect(frontTempSlider, SIGNAL(frontSliderSignal(QVariant)), signalHandler, SLOT(frontTempSliderSlot(QVariant)));
+            QObject::connect(frontTempSlider, SIGNAL(frontSliderSignal(QVariant)), controller, SLOT(frontTempSliderSlot(QVariant)));
         }
     }
 
@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
     if(rearPanel) {
         QObject *rearTempSlider = rearPanel->findChild<QObject*>("rearTempSlider");
         if(rearTempSlider) {
-            QObject::connect(rearTempSlider,SIGNAL(rearSliderSignal(QVariant)),signalHandler, SLOT(rearTempSliderSlot(QVariant)));
+            QObject::connect(rearTempSlider,SIGNAL(rearSliderSignal(QVariant)),controller, SLOT(rearTempSliderSlot(QVariant)));
         }
     }
 
@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
     if(leftDial) {
         QObject *leftHeatDial = leftDial->findChild<QObject*>("leftHeatDial");
         if(leftHeatDial) {
-            QObject::connect(leftHeatDial,SIGNAL(leftDialSignal(QVariant)),signalHandler, SLOT(leftHeatDialSlot(QVariant)));
+            QObject::connect(leftHeatDial,SIGNAL(leftDialSignal(QVariant)),controller, SLOT(leftHeatDialSlot(QVariant)));
         }
     }
 
@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
     if(rightDial) {
         QObject *rightHeatDial = rightDial->findChild<QObject*>("rightHeatDial");
         if(rightHeatDial) {
-            QObject::connect(rightHeatDial,SIGNAL(rightDialSignal(QVariant)),signalHandler, SLOT(rightHeatDialSlot(QVariant)));
+            QObject::connect(rightHeatDial,SIGNAL(rightDialSignal(QVariant)),controller, SLOT(rightHeatDialSlot(QVariant)));
         }
     }
 
@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
         if(fanSpeedIndicator) {
             QObject *fanSpeedSlider = fanSpeedIndicator->findChild<QObject*>("fanSpeedSlider");
             if(fanSpeedSlider) {
-                QObject::connect(fanSpeedSlider,SIGNAL(fanSpeedSliderSignal(QVariant)),signalHandler, SLOT(fanSpeedSliderSlot(QVariant)));
+                QObject::connect(fanSpeedSlider,SIGNAL(fanSpeedSliderSignal(QVariant)),controller, SLOT(fanSpeedSliderSlot(QVariant)));
             }
         }
     }
@@ -71,11 +71,11 @@ int main(int argc, char *argv[])
         QObject *rcButtonObject = buttonPanel->findChild<QObject*>("rcButtonObject");
 
         if(acButtonObject) {
-                QObject::connect(acButtonObject,SIGNAL(acSignal(QVariant)),signalHandler, SLOT(acStateSlot(QVariant)));
+                QObject::connect(acButtonObject,SIGNAL(acSignal(QVariant)),controller, SLOT(acStateSlot(QVariant)));
         }
 
         if(rcButtonObject) {
-                QObject::connect(rcButtonObject,SIGNAL(rcSignal(QVariant)),signalHandler, SLOT(recirculationStateSlot(QVariant)));
+                QObject::connect(rcButtonObject,SIGNAL(rcSignal(QVariant)),controller, SLOT(recirculationStateSlot(QVariant)));
         }
     }
 
