@@ -25,8 +25,8 @@ Window {
         Filler{}
         Filler{}
        FrontTemperaturePannel {id:f1; objectName: "frontPanel"}
-       CentralPannel{}
-       BackTemperaturePannel {id:b1}
+       CentralPannel{objectName: "centralPanel"}
+       BackTemperaturePannel {id:b1; objectName: "backPanel"}
        TemperatureButton{direction: "front"}
        Filler{}
        TemperatureButton{direction: "rear"}
@@ -34,9 +34,9 @@ Window {
        Filler{}
        Filler{}
        Filler{}
-       MyDial{id:dial1;direction: "left"}
-       ButtonPannel{}
-       MyDial {id:dial2;direction: "right"}
+       LeftDial{id:dial1; objectName: "leftDial"}
+       ButtonPannel{objectName: "buttonPanel"}
+       RightDial{id:dial2; objectName: "rightDial";}
 }
 
    }

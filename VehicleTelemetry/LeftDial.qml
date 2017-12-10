@@ -14,6 +14,8 @@ Rectangle {
     }
 Dial {
     id:dial1
+    signal leftDialSignal(var value)
+    objectName: "leftHeatDial"
     from:0
     to:3
     stepSize: 1
@@ -34,7 +36,7 @@ Dial {
      }
     onMoved: {
            mytext.text=dial1.value.toString()
+           leftDialSignal(dial1.value.toString())
     }
    }
 }
-

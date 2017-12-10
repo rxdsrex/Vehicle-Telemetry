@@ -18,8 +18,8 @@ GroupBox {
     }
     MySlider {
         id:slider1;
-        signal sliderSignal(var position)
-        objectName: "tempSlider"
+        signal frontSliderSignal(var value)
+        objectName: "frontTempSlider"
         anchors.left: fTI.right;
         minimumValue: 15
         maximumValue: 30
@@ -27,11 +27,9 @@ GroupBox {
         orientation: Qt.Vertical
         stepSize: 1.5
 
-
-
         onValueChanged: {
             mygb.state = slider1.value.toString()
-            sliderSignal(slider1.value.toString())
+            frontSliderSignal(slider1.value.toString())
         }
     }
     states: [

@@ -21,6 +21,8 @@ GroupBox {
 
     Slider {
         id:horizontalslider
+        signal fanSpeedSliderSignal(var value)
+        objectName: "fanSpeedSlider"
         anchors.top:fs1.bottom
         anchors.left: fanimage.right
         minimumValue: 0
@@ -32,6 +34,7 @@ GroupBox {
         anchors.bottomMargin: 150
         onValueChanged: {
                 mygb.state=horizontalslider.value.toString()
+                fanSpeedSliderSignal(horizontalslider.value.toString())
             }
     }
 

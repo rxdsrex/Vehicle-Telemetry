@@ -6,7 +6,6 @@ GroupBox {
     BackTemperatureIndicatorPannel {
         id:bTI
         anchors.left: bslider.right
-
         VerticalIndicator { id:vi11;indicatorColor:"#b30000"}
         VerticalIndicator { id:vi12;anchors.top:vi11.bottom;indicatorColor:"red"}
         VerticalIndicator { id:vi13;anchors.top:vi12.bottom;indicatorColor:"#ff0000"}
@@ -21,6 +20,8 @@ GroupBox {
     MySlider {
         sid:"bslider";
         id:bslider
+        signal rearSliderSignal(var value)
+        objectName: "rearTempSlider"
         minimumValue: 15
         maximumValue: 30
         value: 15
@@ -28,6 +29,7 @@ GroupBox {
         stepSize: 1.5
         onValueChanged: {
             mygb.state = bslider.value.toString()
+            rearSliderSignal(bslider.value.toString())
         }   
     }
 
