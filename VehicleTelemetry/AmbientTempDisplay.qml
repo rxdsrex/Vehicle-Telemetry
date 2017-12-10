@@ -1,12 +1,16 @@
 import QtQuick 2.6
 
 Rectangle{
-
-    property string currentTemperature:"40"
+    objectName: "ambientDisplay"
+    signal ambientTemperatureChanged(var temp)
+    property string currentTemperature:"25"
     property string unit:" °C"
-
     width:300
     height: 115
+
+    onAmbientTemperatureChanged: {
+        currentTemperature = temp
+    }
 
     Image {
         id: background

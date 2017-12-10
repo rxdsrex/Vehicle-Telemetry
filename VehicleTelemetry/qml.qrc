@@ -8,13 +8,10 @@
         <file>images/fan_control_circ_on.png</file>
         <file>images/fan_icon_off.png</file>
         <file>images/front_temp.png</file>
-        <file>images/hvac_app_icon.svg</file>
         <file>images/left_heat.png</file>
         <file>images/rear_temp.png</file>
         <file>images/right_heat.png</file>
-        <file>images/separator.png</file>
         <file>images/textbg.png</file>
-        <file>images/textdisplaybg.svg</file>
         <file>VerticalIndicator.qml</file>
         <file>TemperatureButton.qml</file>
         <file>ReciculationButton.qml</file>

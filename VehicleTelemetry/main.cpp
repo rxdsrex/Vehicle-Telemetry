@@ -5,16 +5,9 @@
 #include <QtDebug>
 #include "controller.h"
 
-//#include <QQmlApplicationEngine>
-
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
-
-//    QQmlApplicationEngine engine;
-//    engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
-//    if (engine.rootObjects().isEmpty())
-//        return -1;
 
     QQmlEngine engine;
     QQmlComponent component(&engine, QUrl(QStringLiteral("qrc:/main.qml")));
@@ -57,11 +50,15 @@ int main(int argc, char *argv[])
     QObject *centralPanel = object->findChild<QObject*>("centralPanel");
     if(centralPanel) {
         QObject *fanSpeedIndicator = centralPanel->findChild<QObject*>("fanSpeedIndicator");
+        QObject *ambientDisplay = centralPanel->findChild<QObject*>("ambientDisplay");
         if(fanSpeedIndicator) {
             QObject *fanSpeedSlider = fanSpeedIndicator->findChild<QObject*>("fanSpeedSlider");
             if(fanSpeedSlider) {
                 QObject::connect(fanSpeedSlider,SIGNAL(fanSpeedSliderSignal(QVariant)),controller, SLOT(fanSpeedSliderSlot(QVariant)));
             }
+        }
+        if(ambientDisplay) {
+            QObject::connect(controller,SIGNAL(ambientAirTemperatureChanged(QVariant)),ambientDisplay, SIGNAL(ambientTemperatureChanged(QVariant)));
         }
     }
 

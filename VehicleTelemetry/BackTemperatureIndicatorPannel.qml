@@ -3,6 +3,5 @@ import QtQuick.Controls 1.4
 
 GroupBox {
     id:frontTemperatureIndicatorPannel
-
 }
 
