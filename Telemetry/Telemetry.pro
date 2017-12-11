@@ -7,7 +7,7 @@
 QT       += core gui
 CONFIG += console
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 
 TARGET = Telemetry
 TEMPLATE = app
@@ -27,10 +27,12 @@ QT += network
 
 SOURCES += \
         main.cpp \
-        dialog.cpp
+        dialog.cpp \
+    qcustomplot.cpp
 
 HEADERS += \
-        dialog.h
+        dialog.h \
+    qcustomplot.h
 
 FORMS += \
         dialog.ui

@@ -2,9 +2,7 @@
 #define DIALOG_H
 
 #include <QDialog>
-#include <QtGlobal>
-#include <QTimer>
-#include <QTime>
+#include <algorithm>
 #include <QVariantMap>
 #include <QVariant>
 #include <QByteArray>
@@ -12,7 +10,7 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>
-#include <QDebug>
+#include <QtDebug>
 #include <QUrl>
 #include <QUrlQuery>
 #include <QPushButton>
@@ -30,23 +28,13 @@ class Dialog : public QDialog
 
 private:
     Ui::Dialog *ui;
-    const QString WRITE_KEY = "RAYYNYWYN2CD62K7";
     const QString READ_KEY = "9YW3MYRRHQUAL1DW";
     const QString CHANNEL_NUMBER = "380449";
-    int ambientHigh;
-    int ambientLow;
-    QTime time;
     QPushButton *buttonSender;
-    QVariant frontTemperature;
-    QVariant rearTemperature;
-    QVariant leftSeatHeat;
-    QVariant rightSeatHeat;
-    QVariant fanSpeed;
-    QVariant ambientAirTemperature;
-    QVariant isAirConditioningActive;
-    QVariant isRecirculationActive;
     QVariantMap feed;
     QJsonDocument payload;
+    QJsonArray feedArray;
+    QJsonObject attributeObj;
     QNetworkAccessManager *restClient;
     QUrl url;
     QUrlQuery querystr;
@@ -56,15 +44,14 @@ private:
 
 public:
     explicit Dialog(QWidget *parent = 0);
-    void displayGraph(QByteArray&);
+    void populateGraphCbox(QJsonObject);
     void displayTable(QByteArray&);
     ~Dialog();
 
 private slots:
-    void periodic();
-    void publishFeed();
     void retrieveFromDB();
     void replyFinished(QNetworkReply *);
+    void populateGraph();
 };
 
 #endif // DIALOG_H
